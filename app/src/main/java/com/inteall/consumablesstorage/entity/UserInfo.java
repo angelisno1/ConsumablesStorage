@@ -5,24 +5,7 @@ package com.inteall.consumablesstorage.entity;
  */
 
 public class UserInfo {
-    /**
-     * ID : 2039
-     * USERID : 12037
-     * NAME : 孙冬杰
-     * SEX : 1
-     * PHOTO : /assets/avatars/avatar.png
-     * MOBILEPHONE : 13681541544
-     * PHONE : null
-     * EMAIL : null
-     * QQ : null
-     * CREATEUSERID : 1
-     * CREATEUSERNAME : 管理员
-     * CREATETIME : 2016-12-02T16:06:57
-     * UPDATEUSERID : 12037
-     * UPDATEUSERNAME : 孙冬杰
-     * UPDATETIME : 2017-06-10T15:46:58
-     * VALUE_STATE : 1
-     */
+
 
     private int ID;
     private int USERID;
