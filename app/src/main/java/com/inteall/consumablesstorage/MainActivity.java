@@ -1,9 +1,11 @@
 package com.inteall.consumablesstorage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.Toast;
 
@@ -38,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         menuAdapter.setOnItemClickListener(new RvOnClickItemListener() {
             @Override
             public void onClickItemListener(View view, int position) {
-                Toast.makeText(MainActivity.this,mainMenus.get(position).getTitle(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this, SearchView.class);
+                startActivity(intent);
             }
         });
         rvMainList.setAdapter(menuAdapter);
