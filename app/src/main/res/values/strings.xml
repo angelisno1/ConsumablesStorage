@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ConsumablesStorage</string>
+    <string name="login_btn">登   录</string>
+    <string name="tv_storageOut">出   库</string>
+</resources>
