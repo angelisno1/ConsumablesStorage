@@ -13,7 +13,8 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".ui.SearchActivity">
         </activity>
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.StockOutAcitivity"/>
+        <activity android:name=".ui.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

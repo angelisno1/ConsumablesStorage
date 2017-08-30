@@ -12,12 +12,15 @@ import android.widget.Toast;
 import com.inteall.consumablesstorage.Listener.RvOnClickItemListener;
 import com.inteall.consumablesstorage.adapter.MainMenuAdapter;
 import com.inteall.consumablesstorage.entity.MainMenu;
+import com.inteall.consumablesstorage.ui.StockOutAcitivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.media.CamcorderProfile.get;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,8 +43,13 @@ public class MainActivity extends AppCompatActivity {
         menuAdapter.setOnItemClickListener(new RvOnClickItemListener() {
             @Override
             public void onClickItemListener(View view, int position) {
-                Intent intent=new Intent(MainActivity.this, SearchView.class);
-                startActivity(intent);
+                Toast.makeText(MainActivity.this, mainMenus.get(position).getTitle(), Toast.LENGTH_LONG).show();
+                String title = mainMenus.get(position).getTitle();
+                Intent intent;
+                if (title.equals("出库")){
+                    intent=new Intent(MainActivity.this, StockOutAcitivity.class);
+                    startActivity(intent);
+                }
             }
         });
         rvMainList.setAdapter(menuAdapter);

@@ -1,11 +1,18 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="gButtonStyle">@style/Genius.Widget.Button</item>
+        <item name="gFloatActionButtonStyle">@style/Genius.Widget.FloatActionButton</item>
+        <item name="gSeekBarStyle">@style/Genius.Widget.SeekBar</item>
+        <item name="gCheckBoxStyle">@style/Genius.Widget.CompoundButton.CheckBox</item>
+        <item name="gEditTextStyle">@style/Genius.Widget.EditText</item>
+        <item name="gLoadingStyle">@style/Genius.Widget.Loading</item>
+        <item name="gImageViewStyle">@style/Genius.Widget.ImageView</item>
     </style>
 
     <style name="et_style_login" parent="@android:style/Widget.EditText">
@@ -18,4 +25,47 @@
         <item name="android:textColor">@color/WHITE</item>
     </style>
 
+    <style name="ll_stock_form">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15.0dip</item>
+        <item name="android:layout_marginRight">15.0dip</item>
+        <item name="android:layout_marginTop">10.0dip</item>
+        <item name="android:background">@drawable/logineditetext_bg</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="rl_stock_input">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/spinner_height</item>
+        <item name="android:layout_marginLeft">15.0dip</item>
+        <item name="android:layout_marginRight">15.0dip</item>
+    </style>
+
+    <style name="tv_product_info">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">20.0dip</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="v_product_split">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:background">@color/DividerColor</item>
+    </style>
+
+    <style name="tv_product_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_marginLeft">3dp</item>
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/SignInputBoxTextColor</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>

@@ -134,8 +134,6 @@
             android:layout_marginLeft="15.0dip"
             android:layout_marginRight="15.0dip"
             android:layout_marginTop="30.0dip">
-
-
             <Button
                 android:id="@+id/btn_login"
                 style="@style/btn_style_white"
