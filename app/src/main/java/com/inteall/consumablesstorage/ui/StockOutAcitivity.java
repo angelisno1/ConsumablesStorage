@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import com.inteall.consumablesstorage.R;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-
 public class StockOutAcitivity extends AppCompatActivity {
     MaterialSearchView searchView;
     @Override

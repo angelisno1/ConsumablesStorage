@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.inteall.consumablesstorage.Listener.RvOnClickItemListener;
 import com.inteall.consumablesstorage.adapter.MainMenuAdapter;
 import com.inteall.consumablesstorage.entity.MainMenu;
+import com.inteall.consumablesstorage.ui.ApplyFormAcitivity;
 import com.inteall.consumablesstorage.ui.StockOutAcitivity;
 
 import java.util.ArrayList;
@@ -43,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
         menuAdapter.setOnItemClickListener(new RvOnClickItemListener() {
             @Override
             public void onClickItemListener(View view, int position) {
-                Toast.makeText(MainActivity.this, mainMenus.get(position).getTitle(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, mainMenus.get(position).getTitle(), Toast.LENGTH_LONG).show();
                 String title = mainMenus.get(position).getTitle();
                 Intent intent;
                 if (title.equals("出库")){
-                    intent=new Intent(MainActivity.this, StockOutAcitivity.class);
+                    intent=new Intent(MainActivity.this, ApplyFormAcitivity.class);
                     startActivity(intent);
                 }
             }

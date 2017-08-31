@@ -1,7 +1,10 @@
 package com.inteall.consumablesstorage.api;
 
+import com.inteall.consumablesstorage.entity.ApplyForm;
 import com.inteall.consumablesstorage.entity.HttpResult;
 import com.inteall.consumablesstorage.entity.UserInfo;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -14,4 +17,7 @@ import retrofit2.http.Query;
 public interface ApiService {
     @GET("account/login")
     Observable<HttpResult<UserInfo>> login(@Query("userName")String userName, @Query("passWord")String passWord);
+    @GET("api/GetApplyFormList")
+    Observable<HttpResult<List<ApplyForm>>>  getApplyForm();
+
 }
