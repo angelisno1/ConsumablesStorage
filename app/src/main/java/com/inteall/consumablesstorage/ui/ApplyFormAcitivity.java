@@ -3,6 +3,7 @@ package com.inteall.consumablesstorage.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -10,12 +11,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.inteall.consumablesstorage.R;
+import com.inteall.consumablesstorage.adapter.ApplyFormAdapter;
 import com.inteall.consumablesstorage.api.ApiService;
 import com.inteall.consumablesstorage.entity.ApplyForm;
 import com.inteall.consumablesstorage.entity.HttpResult;
 import com.inteall.consumablesstorage.http.RetrofitUtils;
+import com.inteall.consumablesstorage.view.SpaceItemDecoration;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,6 +37,8 @@ public class ApplyFormAcitivity extends AppCompatActivity {
     @BindView(R.id.rv_apply_list)
     RecyclerView rvApplyList;
 
+    List<ApplyForm> applyForms;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +49,19 @@ public class ApplyFormAcitivity extends AppCompatActivity {
         searchView.setVoiceSearch(false);
         searchView.setCursorDrawable(R.drawable.custom_cursor);
         searchView.setEllipsize(true);
-        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
-        getApplyFormList();
+
+//        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
+//        getApplyFormList();
+        initData();
+        rvApplyList.setLayoutManager(new LinearLayoutManager(this));
+        rvApplyList.addItemDecoration(new SpaceItemDecoration(10));
+        rvApplyList.setAdapter(new ApplyFormAdapter(this,applyForms));
     }
 
-    private void getApplyFormList(){
+    /**
+     * 获取待出库的申请单列表
+     */
+    private void getApplyFormList() {
         RetrofitUtils.getInstance().getRetrofit("http://10.0.3.2:5072")
                 .create(ApiService.class)
                 .getApplyForm()
@@ -58,9 +72,10 @@ public class ApplyFormAcitivity extends AppCompatActivity {
                     public void onSubscribe(Disposable d) {
 
                     }
+
                     @Override
                     public void onNext(HttpResult<List<ApplyForm>> value) {
-                        Toast.makeText(getApplicationContext(),value.getData().get(0).getDepartment_Name(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), value.getData().get(0).getDepartment_Name(), Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -74,6 +89,17 @@ public class ApplyFormAcitivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void initData() {
+        applyForms = new ArrayList<ApplyForm>();
+        for (int i = 0; i < 10; i++) {
+            ApplyForm applyForm = new ApplyForm();
+            applyForm.setDepartment_Name("放射科" + i + "室");
+            applyForms.add(applyForm);
+        }
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);

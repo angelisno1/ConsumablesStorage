@@ -14,6 +14,7 @@ import com.inteall.consumablesstorage.adapter.MainMenuAdapter;
 import com.inteall.consumablesstorage.entity.MainMenu;
 import com.inteall.consumablesstorage.ui.ApplyFormAcitivity;
 import com.inteall.consumablesstorage.ui.StockOutAcitivity;
+import com.inteall.consumablesstorage.view.SpaceItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,6 @@ import butterknife.ButterKnife;
 import static android.media.CamcorderProfile.get;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @BindView(R.id.rv_main_list)
     RecyclerView rvMainList;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvMainList.setLayoutManager(linearLayoutManager);
+        rvMainList.addItemDecoration(new SpaceItemDecoration(20));
         MainMenuAdapter menuAdapter = new MainMenuAdapter(this, mainMenus);
         menuAdapter.setOnItemClickListener(new RvOnClickItemListener() {
             @Override
