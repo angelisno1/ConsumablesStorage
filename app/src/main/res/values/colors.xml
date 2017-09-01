@@ -141,6 +141,6 @@
     <color name="DividerColor">#ffeaebed</color>
     <color name="UpInterestTreasureColor">#fff55c24</color>
     <color name="UpInterestTreasureTitleColor">#ff333333</color>
-
+    <color name="super_light_grey">#FAFAFA</color>
     <color name="theme_primary">#2196F3</color>
 </resources>

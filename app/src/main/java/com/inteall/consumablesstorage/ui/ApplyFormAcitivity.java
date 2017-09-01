@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.inteall.consumablesstorage.Listener.RvOnClickItemListener;
 import com.inteall.consumablesstorage.R;
 import com.inteall.consumablesstorage.adapter.ApplyFormAdapter;
 import com.inteall.consumablesstorage.api.ApiService;
@@ -36,8 +38,8 @@ public class ApplyFormAcitivity extends AppCompatActivity {
     MaterialSearchView searchView;
     @BindView(R.id.rv_apply_list)
     RecyclerView rvApplyList;
-
     List<ApplyForm> applyForms;
+    ApplyFormAdapter formAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,15 +51,9 @@ public class ApplyFormAcitivity extends AppCompatActivity {
         searchView.setVoiceSearch(false);
         searchView.setCursorDrawable(R.drawable.custom_cursor);
         searchView.setEllipsize(true);
-
-//        searchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
-//        getApplyFormList();
-        initData();
-        rvApplyList.setLayoutManager(new LinearLayoutManager(this));
-        rvApplyList.addItemDecoration(new SpaceItemDecoration(10));
-        rvApplyList.setAdapter(new ApplyFormAdapter(this,applyForms));
+        getApplyFormList();
+//        initData();
     }
-
     /**
      * 获取待出库的申请单列表
      */
@@ -70,17 +66,23 @@ public class ApplyFormAcitivity extends AppCompatActivity {
                 .subscribe(new Observer<HttpResult<List<ApplyForm>>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
                     }
-
                     @Override
-                    public void onNext(HttpResult<List<ApplyForm>> value) {
-                        Toast.makeText(getApplicationContext(), value.getData().get(0).getDepartment_Name(), Toast.LENGTH_LONG).show();
-                    }
+                    public void onNext(final HttpResult<List<ApplyForm>> value) {
+                        formAdapter = new ApplyFormAdapter(ApplyFormAcitivity.this, value.getData());
+                        formAdapter.setOnClickItemListener(new RvOnClickItemListener() {
+                            @Override
+                            public void onClickItemListener(View view, int position) {
 
+                            }
+                        });
+                        rvApplyList.setLayoutManager(new LinearLayoutManager(ApplyFormAcitivity.this));
+                        rvApplyList.addItemDecoration(new SpaceItemDecoration(10));
+                        rvApplyList.setAdapter(formAdapter);
+                    }
                     @Override
                     public void onError(Throwable e) {
-
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -88,16 +90,6 @@ public class ApplyFormAcitivity extends AppCompatActivity {
 
                     }
                 });
-    }
-
-    private void initData() {
-        applyForms = new ArrayList<ApplyForm>();
-        for (int i = 0; i < 10; i++) {
-            ApplyForm applyForm = new ApplyForm();
-            applyForm.setDepartment_Name("放射科" + i + "室");
-            applyForms.add(applyForm);
-        }
-
     }
 
     @Override
